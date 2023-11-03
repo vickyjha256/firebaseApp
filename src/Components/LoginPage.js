@@ -1,15 +1,32 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 
-const LoginPage = () => {
+const LoginPage = (props) => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
 
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = () => {
+  const auth = getAuth();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     console.log("Submit Triggered");
+
+    try {
+      const response = await signInWithEmailAndPassword(auth, credentials.email, credentials.password);
+
+      console.log("Response returned.");
+      console.log(response.user);
+
+      navigate('/');
+    } catch (error) {
+      console.log("Error: " + error);
+      props.showAlert("danger", "Invalid email or password.");
+    }
+
   }
 
   // const btmove = (e) => {

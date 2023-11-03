@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../firebase';
 
 
@@ -16,15 +16,25 @@ const SignUpPage = (props) => {
 
         if (credentials.password !== credentials.conpassword) {
             props.showAlert("danger", "Passwords are not equal.");
-
             return;
         }
 
         console.log("Submit Triggered");
 
-        // const response = await createUserWithEmailAndPassword(auth, credentials.email, credentials.password);
-        console.log("Response returned.");
-        // console.log(response);
+        try {
+            const response = await createUserWithEmailAndPassword(auth, credentials.email, credentials.password);
+
+            const user = await updateProfile(response.user, {displayName: credentials.name});
+
+            console.log("Response returned.");
+            console.log(response.user);
+            console.log("USer: " + user);
+
+            // navigate('/');
+        } catch (error) {
+            console.log("Error: " + error);
+            props.showAlert("danger", "User already exist with this email.");
+        }
     }
 
     const navigate = useNavigate();
@@ -38,7 +48,7 @@ const SignUpPage = (props) => {
                         <h1 style={{ fontSize: "50px" }}> Hii There! 😉</h1>
 
                         <p style={{ marginTop: "50px", fontWeight: "bold" }}> Already have an account? </p>
-                        <button style={{ borderRadius: "30px" }} onClick={() => { navigate('/') }} className='btn btn-primary btn-lg'>Login Account</button>
+                        <button style={{ borderRadius: "30px" }} onClick={() => { navigate('/login') }} className='btn btn-primary btn-lg'>Login Account</button>
                     </div>
 
 

@@ -13,9 +13,10 @@ const Alert = (props) => {
 
     return (
         <>
-            <div className={`alert alert-${props.alert.type} fixed-top alert-dismissible`} role="alert">
+            {props.alert && <div className={`alert alert-${props.alert.type} fixed-top alert-dismissible`} role="alert">
                 <b>{capitalise(props.alert.type)}</b>: {props.alert.text}
             </div>
+            }
         </>
     )
 }

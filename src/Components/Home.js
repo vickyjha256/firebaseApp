@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-const Home = () => {
+const Home = (props) => {
+  useEffect(() => {
+    if (!props.isLoggedin) {
+      props.showAlert("info", "Please login.");
+      navigate('/login');
+    }
+  }, []);
+
+  const navigate = useNavigate();
+
   return (
     <>
-        <div className='container fluid'>
-            <h1> This is home page. </h1>
-        </div>
+      <div className='container fluid'>
+        <h1> Welcome:  {props.username} </h1>
+      </div>
     </>
   );
 }
