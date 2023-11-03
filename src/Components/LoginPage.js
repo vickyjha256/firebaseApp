@@ -12,21 +12,21 @@ const LoginPage = () => {
     console.log("Submit Triggered");
   }
 
-  const btmove = (e) => {
-    let movingBtn = document.getElementById("outdiv");
-    if (credentials.email || credentials.password === "") {
-      if (movingBtn.className === "d-flex justify-content-start") {
-        movingBtn.className = Math.floor(Math.random() * 12) > 6 ? "d-flex justify-content-center" : "d-flex justify-content-end"
-      } else if (movingBtn.className === "d-flex justify-content-center") {
-        movingBtn.className = Math.floor(Math.random() * 12) > 6 ? "d-flex justify-content-start" : "d-flex justify-content-end"
-      } else if (movingBtn.className === "d-flex justify-content-end") {
-        movingBtn.className = Math.floor(Math.random() * 12) > 6 ? "d-flex justify-content-start" : "d-flex justify-content-center"
-      }
-    }
-    else {
-      movingBtn.className = "d-flex justify-content-center";
-    }
-  }
+  // const btmove = (e) => {
+  //   let movingBtn = document.getElementById("outdiv");
+  //   if (credentials.email || credentials.password === "") {
+  //     if (movingBtn.className === "d-flex justify-content-start") {
+  //       movingBtn.className = Math.floor(Math.random() * 12) > 6 ? "d-flex justify-content-center" : "d-flex justify-content-end"
+  //     } else if (movingBtn.className === "d-flex justify-content-center") {
+  //       movingBtn.className = Math.floor(Math.random() * 12) > 6 ? "d-flex justify-content-start" : "d-flex justify-content-end"
+  //     } else if (movingBtn.className === "d-flex justify-content-end") {
+  //       movingBtn.className = Math.floor(Math.random() * 12) > 6 ? "d-flex justify-content-start" : "d-flex justify-content-center"
+  //     }
+  //   }
+  //   else {
+  //     movingBtn.className = "d-flex justify-content-center";
+  //   }
+  // }
 
   const navigate = useNavigate();
 
@@ -35,7 +35,7 @@ const LoginPage = () => {
       <div className='container-fluid'>
         <div className='row'>
 
-          <div align="center" style={{ marginTop: "210px" }} className='col-xxl-6'>
+          <div align="center" style={{ marginTop: "210px", color: "white" }} className='col-xxl-6'>
             <h1 style={{ fontSize: "50px" }}> Welcome Back</h1>
 
             <p style={{ marginTop: "50px", fontWeight: "bold" }}>If you don't have account, please create new Account.</p>
@@ -49,7 +49,7 @@ const LoginPage = () => {
                 {/* <div style={{ backgroundColor: "aqua" }} className="modal-content"> */}
                 <div className="modal-content">
                   <div className="modal-header">
-                    <h3 className="modal-title"><b>Login to you account</b></h3>
+                    <h3 className="modal-title"><b>Login to your account</b></h3>
                   </div>
                   <div className="modal-body">
 
@@ -64,13 +64,13 @@ const LoginPage = () => {
                           <label style={{ color: "white" }} htmlFor="password">Password</label>
                         </div>
 
-                        {/* <button style={{ width: "100%", backgroundColor: "#042459" }} type="submit" className="btn btn-primary my-1"><b>Login</b></button> */}
+                        <button style={{ width: "100%", backgroundColor: "#042459" }} type="submit" className="btn btn-primary my-1"><b>Login</b></button>
 
-                        <div id='outdiv' className='d-flex justify-content-center'>
+                        {/* <div id='outdiv' className='d-flex justify-content-center'>
                           <div style={{ width: "30%" }} id='indiv' onMouseOver={(credentials.email || credentials.password) === "" ? btmove : ""}>
                             <button disabled={credentials.email === "" || credentials.password === ""} style={{ width: "100%", backgroundColor: "blue" }} type="submit" className="btn btn-primary my-1"><b>Login</b></button>
                           </div>
-                        </div>
+                        </div> */}
                       </form>
                     </div>
                   </div>

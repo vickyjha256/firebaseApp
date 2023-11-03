@@ -1,15 +1,30 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 
-const SignUpPage = () => {
+
+const SignUpPage = (props) => {
     const [credentials, setCredentials] = useState({ name: "", email: "", password: "", conpassword: "" });
 
     const onChange = (e) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value })
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (credentials.password !== credentials.conpassword) {
+            props.showAlert("danger", "Passwords are not equal.");
+
+            return;
+        }
+
         console.log("Submit Triggered");
+
+        // const response = await createUserWithEmailAndPassword(auth, credentials.email, credentials.password);
+        console.log("Response returned.");
+        // console.log(response);
     }
 
     const navigate = useNavigate();
@@ -19,7 +34,7 @@ const SignUpPage = () => {
             <div className='container-fluid'>
                 <div className='row'>
 
-                    <div align="center" style={{ marginTop: "210px" }} className='col-xxl-6'>
+                    <div align="center" style={{ marginTop: "210px", color: "white" }} className='col-xxl-6'>
                         <h1 style={{ fontSize: "50px" }}> Hii There! 😉</h1>
 
                         <p style={{ marginTop: "50px", fontWeight: "bold" }}> Already have an account? </p>
