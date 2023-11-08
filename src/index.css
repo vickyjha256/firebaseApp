@@ -1,11 +1,68 @@
-body{
-    background-color: salmon;
+body {
     background: linear-gradient(to left, rgb(41, 121, 167), rgb(3, 3, 98));
 }
 
-.modal-content{
+.modal-content {
     opacity: 0.8;
+    background-color: white;
+    /* margin-top: 170px; */
+    border-radius: 4px;
+    padding: 5px;
 }
-.modal-content:hover{
+
+.modal-content:hover {
     opacity: 0.9;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    #leftbox {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    /* #authbox {
+        padding-top: 150px;
+        padding-left: 140px;
+        padding-right: 140px;
+    } */
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    /* #authbox {
+        padding-top: 150px;
+        padding-left: 140px;
+        padding-right: 140px;
+    } */
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    #leftbox {
+        margin-top: 160px;
+    }
+
+    #authbox {
+        padding-top: 150px;
+        padding-left: 140px;
+        padding-right: 140px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    #leftbox {
+        margin-top: 160px;
+    }
+
+    #authbox {
+        padding-top: 150px;
+        padding-left: 140px;
+        padding-right: 140px;
+    }
 }
